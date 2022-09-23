@@ -1,0 +1,10 @@
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+/media/
+*.bac
+.idea
+*.py[cod]
+*$py.class
+venv
