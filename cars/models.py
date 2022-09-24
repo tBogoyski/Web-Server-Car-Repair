@@ -5,7 +5,7 @@ class Car(models.Model):
     name = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     maker = models.CharField(max_length=100)
-    year_of_make = models.DateField()
+    year_of_make = models.DateField()  # must be in yyyy-mm-dd format
     registration_number = models.CharField(max_length=8)
 
 
