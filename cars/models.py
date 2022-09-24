@@ -8,6 +8,9 @@ class Car(models.Model):
     year_of_make = models.DateField()  # must be in yyyy-mm-dd format
     registration_number = models.CharField(max_length=8)
 
+    def __str__(self):
+        return self.name
+
 
 class Event(models.Model):
     date_of_event = models.DateTimeField()

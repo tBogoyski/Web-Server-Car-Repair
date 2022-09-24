@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars List</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Manufacturer</th>
+        <th>Year of make</th>
+        <th>Registration Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if car_list %}
+        {% for car in car_list %}
+            <tr>
+                <td>{{ car.name }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.maker }}</td>
+                <td>{{ car.year_of_make }}</td>
+                <td>{{ car.registration_number }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h1>No cars added.</h1>
+    {% endif %}
+    </tbody>
+</table>
+
+</body>
+</html>
