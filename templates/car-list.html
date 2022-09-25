@@ -13,6 +13,7 @@
         <th>Manufacturer</th>
         <th>Year of make</th>
         <th>Registration Number</th>
+        <th>More Info</th>
     </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
                 <td>{{ car.maker }}</td>
                 <td>{{ car.year_of_make }}</td>
                 <td>{{ car.registration_number }}</td>
+                <td><a href="{% url 'car_detail' pk=car.pk %}">Details</a></td>
             </tr>
         {% endfor %}
     {% else %}

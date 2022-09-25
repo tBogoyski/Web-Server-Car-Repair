@@ -21,6 +21,7 @@ import cars.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', cars.views.index, name='index'),
-    path('list/', cars.views.CarsListView.as_view(), name='car-list'),
-    path('add-car/', cars.views.add_car, name='add-car')
+    path('list/', cars.views.CarListView.as_view(), name='car_list'),
+    path('add-car/', cars.views.add_car, name='add_car'),
+    path('car/<int:pk>/', cars.views.CarDetailView.as_view(), name='car_detail'),
 ]

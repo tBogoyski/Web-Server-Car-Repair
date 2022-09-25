@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from cars.forms import CarForm
 from cars.models import Car
@@ -20,6 +20,11 @@ def add_car(request):
     return render(request, 'add-car.html', {'form': form})
 
 
-class CarsListView(ListView):
+class CarListView(ListView):
     model = Car
     template_name = 'car-list.html'
+
+
+class CarDetailView(DetailView):
+    model = Car
+    template_name = 'car-details.html'
