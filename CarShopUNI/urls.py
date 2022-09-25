@@ -20,8 +20,10 @@ import cars.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', cars.views.index, name='index'),
+    path('', cars.views.IndexView.as_view(), name='index'),
     path('list/', cars.views.CarListView.as_view(), name='car_list'),
-    path('add-car/', cars.views.add_car, name='add_car'),
+    path('add-car/', cars.views.CarCreateView.as_view(), name='add_car'),
     path('car/<int:pk>/', cars.views.CarDetailView.as_view(), name='car_detail'),
+    path('car/<int:pk>/delete/', cars.views.CarDeleteView.as_view(), name='car_delete'),
+    path('car/<int:pk>/update/', cars.views.CarUpdateView.as_view(), name='car_update'),
 ]
