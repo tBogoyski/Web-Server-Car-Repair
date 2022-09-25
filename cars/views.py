@@ -6,6 +6,10 @@ from cars.models import Car
 
 
 def index(request):
+    return render(request, 'index.html')
+
+
+def add_car(request):
     if request.method == 'POST':
         form = CarForm(request.POST)
         if form.is_valid():
@@ -13,7 +17,7 @@ def index(request):
     else:
         form = CarForm()
 
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'add-car.html', {'form': form})
 
 
 class CarsListView(ListView):
