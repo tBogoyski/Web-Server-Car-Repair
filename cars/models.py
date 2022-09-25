@@ -19,3 +19,4 @@ class Event(models.Model):
     periodic_event = models.BooleanField()
     next_date = models.DateField()
     next_change = models.DateField()
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
