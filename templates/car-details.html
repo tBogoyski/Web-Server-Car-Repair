@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Car Details</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Details for: {{ car.name }}</h1>
-<a href="{% url 'car_delete' pk=car.pk %}">Delete</a>
-<a href="{% url 'car_update' pk=car.pk %}">Update</a>
+{% block content %}
+    <h1>Details for: {{ car.name }}</h1>
+    <a href="{% url 'car_delete' pk=car.pk %}">Delete</a>
+    <a href="{% url 'car_update' pk=car.pk %}">Update</a>
 
-</body>
-</html>
+{% endblock %}
