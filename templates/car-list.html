@@ -1,38 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cars List</title>
-</head>
-<body>
-{% if car_list %}
-    <table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Model</th>
-        <th>Manufacturer</th>
-        <th>Year of make</th>
-        <th>Registration Number</th>
-        <th>Details</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for car in car_list %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if car_list %}
+        <table>
+        <thead>
         <tr>
-            <td>{{ car.name }}</td>
-            <td>{{ car.model }}</td>
-            <td>{{ car.maker }}</td>
-            <td>{{ car.year_of_make }}</td>
-            <td>{{ car.registration_number }}</td>
-            <td><a href="{% url 'car_detail' pk=car.pk %}">Details</a></td>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Manufacturer</th>
+            <th>Year of make</th>
+            <th>Registration Number</th>
+            <th>Details</th>
         </tr>
-    {% endfor %}
-{% else %}
-    <h1>No cars added.</h1>
-{% endif %}
+        </thead>
+        <tbody>
+        {% for car in car_list %}
+            <tr>
+                <td>{{ car.name }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.maker }}</td>
+                <td>{{ car.year_of_make }}</td>
+                <td>{{ car.registration_number }}</td>
+                <td><a href="{% url 'car_detail' pk=car.pk %}">Details</a></td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h1>No cars added.</h1>
+    {% endif %}
 </tbody>
 </table>
 
-</body>
-</html>
+{% endblock %}

@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Car</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<form method="post">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{ car.name }}"?</p>
+{% block content %}
 
-    <input type="submit" value="Confirm">
-    <a href="{% url 'car_detail' pk=car.id %}">Cancel</a>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ car.name }}"?</p>
 
-</body>
-</html>
+        <input type="submit" value="Confirm">
+        <a href="{% url 'car_detail' pk=car.id %}">Cancel</a>
+    </form>
+
+{% endblock %}
