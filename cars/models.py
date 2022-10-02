@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Car(models.Model):
@@ -7,6 +8,7 @@ class Car(models.Model):
     maker = models.CharField(max_length=100)
     year_of_make = models.DateField()  # must be in yyyy-mm-dd format
     registration_number = models.CharField(max_length=8)
+    created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name
