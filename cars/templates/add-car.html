@@ -5,14 +5,16 @@
 {% block content %}
 
 
-    <div class="center-middle" style="color: white;">
-        <div class="col-form-label-lg form-control-lg">
-            <form method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <input type="submit" value="Add" class="btn btn-success">
-                <a href="{% url 'car_list' %}" class="btn btn-danger">Cancel</a>
-            </form>
+    <div class="center-middle">
+        <div class="bg-white badge text-wrap" style="color: black;">
+            <div class="col-form-label-lg form-control-lg">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" value="Add" class="btn btn-success">
+                    <a href="{% url 'car_list' %}" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
         </div>
     </div>
 
