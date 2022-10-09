@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="center-middle">
+        <div class="bg-white badge text-wrap" style="color: black;">
+            <form method="post">
+                {% csrf_token %}
+                <h2>Are you sure you want to delete event: "{{ event.date_of_event }}" for {{ event.car.name }}
+                    car?</h2>
+
+                <input type="submit" value="Confirm" class="btn btn-danger">
+                <a href="{% url 'event_detial' pk=event.id %}" class="btn btn-primary ">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

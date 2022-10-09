@@ -35,10 +35,23 @@ class CarDetailView(DetailView):
         return context
 
 
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'event-detail.html'
+
+
 class CarDeleteView(DeleteView):
     model = Car
     success_url = reverse_lazy('car_list')
     template_name = 'delete-car.html'
+
+
+class EventDeleteView(DeleteView):
+    model = Event
+    template_name = 'event-delete.html'
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('car_detail', args=(self.object.car.id,))
 
 
 class CarUpdateView(UpdateView):
@@ -46,8 +59,17 @@ class CarUpdateView(UpdateView):
     fields = ['name', 'model', 'maker', 'year_of_make', 'registration_number']
     template_name = 'edit-car.html'
 
-    def get_success_url(self, **kwargs):
+    def get_success_url(self):
         return reverse_lazy('car_detail', args=(self.object.id,))
+
+
+class EventUpdateView(UpdateView):
+    model = Event
+    fields = ['km_of_car', 'event_text', 'periodic_event', 'next_date', 'next_change']
+    template_name = 'event-update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('event_detial', args=(self.object.id,))
 
 
 def add_event_to_car(request, pk):

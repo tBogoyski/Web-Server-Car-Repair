@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Event details for: {{ event.car.name }}</h1>
+    <a href="{% url 'event_delete' pk=event.pk %}">Delete</a>
+    <a href="{% url 'event_update' pk=event.pk %}">Update</a>
+    <a href="{% url 'car_detail' pk=event.car.pk %}">Back</a>
+
+
+{% endblock %}

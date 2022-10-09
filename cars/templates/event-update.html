@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="center-middle">
+        <div class="bg-white badge text-wrap" style="color: black;">
+            <div class="col-form-label-lg form-control-lg">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" value="Save" class="btn btn-success">
+                    <a href="{% url 'event_detial' pk=event.pk %}" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
