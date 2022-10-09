@@ -31,7 +31,7 @@ class CarDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['events'] = Event.objects.filter(car_id=self.object.id)
+        context['events'] = Event.objects.filter(car_id=self.object.id).order_by('-date_of_event')
         return context
 
 

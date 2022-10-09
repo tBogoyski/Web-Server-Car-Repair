@@ -1,20 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Details for: {{ car.name }}</h1>
-    <a href="{% url 'car_delete' pk=car.pk %}">Delete</a>
-    <a href="{% url 'car_update' pk=car.pk %}">Update</a>
-    <a href="{% url 'add_event' pk=car.pk %}">Create event</a>
-    <a href="{% url 'car_list' %}">Back</a>
+    <div class="text-start" style="margin-left: 0.5%; margin-top: 0.5%;">
+        <a href="{% url 'car_list' %}" class="btn btn-primary btn-lg text">Back</a>
+    </div>
+    <div class="text-center">
+        <div class="bg-white badge text-wrap" style="color: black;">
+            <h1 class="text-center">Details for: {{ car.name }}</h1>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="bg-white badge text-wrap fs-3" style="color: black;">
+            <p class="text-center">Model: {{ car.model }}</p>
+            <p class="text-center">Manufacturer: {{ car.maker }}</p>
+            <p class="text-center">Year of make: {{ car.year_of_make }}</p>
+            <p class="text-center">Registration Number: {{ car.registration_number }}</p>
+            <p class="text-center">Added in the system on: {{ car.created_date }}</p>
+        </div>
+    </div>
+
+    <div class="text-center" style="margin-bottom: 3%; margin-top: 1%">
+        <a href="{% url 'car_update' pk=car.pk %}" class="btn btn-warning btn-lg text">Update Car Info</a>
+        <a href="{% url 'car_delete' pk=car.pk %}" class="btn btn-danger btn-lg text">Delete Car</a>
+    </div>
+
+
+    {#EVENTS TABLE#}
+    <div class="text-center" style="margin-bottom: 1%">
+        <div class="bg-white badge text-wrap" style="color: black;">
+            <h1 class="text-center">Events for this car:</h1>
+        </div>
+    </div>
 
     {% if events %}
-        <table class="table">
+        <table class="table table-striped table-dark">
         <thead>
         <tr>
             <th scope="col">DATE</th>
             <th scope="col">KM OF CAR</th>
             <th scope="col">NEXT DATE</th>
             <th scope="col">PERIODIC EVENT</th>
+            <th scope="col">NEXT CHANGE</th>
             <th scope="col">DETAILS</th>
         </tr>
         </thead>
@@ -23,9 +50,22 @@
             <tr>
                 <td>{{ event.date_of_event }}</td>
                 <td>{{ event.km_of_car }}</td>
-                <td>{{ event.next_date }}</td>
-                <td>{{ event.periodic_event }}</td>
-                <td><a href="{% url 'event_detial' pk=event.pk %}">Details</a></td>
+                {% if event.next_date %}
+                    <td>{{ event.next_date }}</td>
+                {% else %}
+                    <td>No next date given.</td>
+                {% endif %}
+                {% if event.periodic_event %}
+                    <td>Yes</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+                {% if event.next_change %}
+                    <td>{{ event.next_change }}</td>
+                {% else %}
+                    <td>No next change given.</td>
+                {% endif %}
+                <td><a href="{% url 'event_detial' pk=event.pk %}" class="btn btn-primary btn-sm">Details</a></td>
             </tr>
         {% endfor %}
     {% else %}
@@ -33,5 +73,9 @@
     {% endif %}
 </tbody>
 </table>
+    <div class="text-end">
+        <a href="{% url 'add_event' pk=car.pk %}" class="btn btn-success btn-lg text" style="margin-right: 1%;">Add new
+            event</a>
+    </div>
 
 {% endblock %}

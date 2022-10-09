@@ -2,6 +2,12 @@
 
 {% block content %}
 
+    <div class="text-center">
+        <div class="bg-white badge text-wrap" style="color: black; margin-top: 1%; margin-bottom: 1%">
+            <h1 class="text-center">All cars in the system:</h1>
+        </div>
+    </div>
+
     {% if car_list %}
         <table class="table table-striped table-dark">
         <thead>
@@ -22,7 +28,7 @@
                 <td>{{ car.maker }}</td>
                 <td>{{ car.year_of_make }}</td>
                 <td>{{ car.registration_number }}</td>
-                <td><a href="{% url 'car_detail' pk=car.pk %}">Details</a></td>
+                <td><a href="{% url 'car_detail' pk=car.pk %}" class="btn btn-primary btn-sm">Details</a></td>
             </tr>
         {% endfor %}
     {% else %}
