@@ -15,10 +15,10 @@ class Car(models.Model):
 
 
 class Event(models.Model):
-    date_of_event = models.DateTimeField()
+    date_of_event = models.DateTimeField(default=timezone.now)
     km_of_car = models.IntegerField()
     event_text = models.TextField()
     periodic_event = models.BooleanField()
-    next_date = models.DateField()
-    next_change = models.DateField()
+    next_date = models.DateField(blank=True, null=True)
+    next_change = models.DateField(blank=True, null=True)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)

@@ -4,5 +4,31 @@
     <h1>Details for: {{ car.name }}</h1>
     <a href="{% url 'car_delete' pk=car.pk %}">Delete</a>
     <a href="{% url 'car_update' pk=car.pk %}">Update</a>
+    <a href="{% url 'add_event' pk=car.pk %}">Create event</a>
+
+    {% if events %}
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">DATE</th>
+            <th scope="col">KM OF CAR</th>
+            <th scope="col">NEXT DATE</th>
+            <th scope="col">PERIODIC EVENT</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.date_of_event }}</td>
+                <td>{{ event.km_of_car }}</td>
+                <td>{{ event.next_date }}</td>
+                <td>{{ event.periodic_event }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h1>No events added.</h1>
+    {% endif %}
+</tbody>
+</table>
 
 {% endblock %}

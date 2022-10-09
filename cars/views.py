@@ -1,7 +1,9 @@
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView, TemplateView
 
-from cars.models import Car
+from cars.forms import EventForm
+from cars.models import Car, Event
 
 
 class IndexView(TemplateView):
@@ -27,6 +29,11 @@ class CarDetailView(DetailView):
     model = Car
     template_name = 'car-details.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['events'] = Event.objects.filter(car_id=self.object.id)
+        return context
+
 
 class CarDeleteView(DeleteView):
     model = Car
@@ -38,4 +45,20 @@ class CarUpdateView(UpdateView):
     model = Car
     fields = ['name', 'model', 'maker', 'year_of_make', 'registration_number']
     template_name = 'edit-car.html'
-    success_url = reverse_lazy('car_list')
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy('car_detail', args=(self.object.id,))
+
+
+def add_event_to_car(request, pk):
+    car = get_object_or_404(Car, pk=pk)
+    if request.method == 'POST':
+        form = EventForm(request.POST)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.car = car
+            event.save()
+            return redirect('car_detail', pk=car.pk)
+    else:
+        form = EventForm()
+    return render(request, 'add-event.html', {'form': form, 'car': car})
