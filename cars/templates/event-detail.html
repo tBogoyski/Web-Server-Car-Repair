@@ -1,10 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Event details for: {{ event.car.name }}</h1>
-    <a href="{% url 'event_delete' pk=event.pk %}">Delete</a>
-    <a href="{% url 'event_update' pk=event.pk %}">Update</a>
-    <a href="{% url 'car_detail' pk=event.car.pk %}">Back</a>
+    <div class="text-start" style="margin-left: 0.5%; margin-top: 0.5%;">
+        <a href="{% url 'car_detail' pk=event.car.pk %}" class="btn btn-primary btn-lg text">Back</a>
+    </div>
+    <div class="text-center" style="margin-bottom: 1%;">
+        <a href="{% url 'event_update' pk=event.pk %}" class="btn btn-warning btn-lg">Update</a>
+        <a href="{% url 'event_delete' pk=event.pk %}" class="btn btn-danger btn-lg">Delete</a>
+    </div>
+    <div class="text-center">
+        <div class="bg-white badge text-wrap" style="color: black;">
+            <h1 class="text-center">Event details for: {{ event.car.name }}
+                on {{ event.date_of_event }}</h1>
+        </div>
+    </div>
 
+    <div class="text-center" style="margin-top: 2%">
+        <div class="bg-white badge text-wrap fs-3" style="color: black;">
+            <p>Date of the event: {{ event.date_of_event }}</p>
+            <p>KM of the car: {{ event.km_of_car }}</p>
+            <p>Is the event periodic: {{ event.periodic_event }}</p>
+            {% if event.next_date %}
+                <p>Next date for the car: {{ event.next_date }}</p>
+            {% endif %}
+            {% if event.next_change %}
+                <p>Service again in: {{ event.next_change }}km</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-center" style="margin-top: 1%;">
+        <div class="bg-white badge text-wrap fs-3" style="color: black;">
+            <p>It was in service for: {{ event.event_text }}</p>
+        </div>
+    </div>
 
 {% endblock %}

@@ -9,8 +9,8 @@
                 <h2>Are you sure you want to delete event: "{{ event.date_of_event }}" for {{ event.car.name }}
                     car?</h2>
 
-                <input type="submit" value="Confirm" class="btn btn-danger">
-                <a href="{% url 'event_detial' pk=event.id %}" class="btn btn-primary ">Cancel</a>
+                <input type="submit" value="Confirm" class="btn btn-danger btn-lg">
+                <a href="{% url 'event_detial' pk=event.id %}" class="btn btn-primary btn-lg">Cancel</a>
             </form>
         </div>
     </div>

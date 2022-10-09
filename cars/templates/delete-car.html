@@ -8,8 +8,8 @@
                 {% csrf_token %}
                 <h2>Are you sure you want to delete "{{ car.name }}"?</h2>
 
-                <input type="submit" value="Confirm" class="btn btn-danger">
-                <a href="{% url 'car_detail' pk=car.id %}" class="btn btn-primary ">Cancel</a>
+                <input type="submit" value="Confirm" class="btn btn-danger btn-lg">
+                <a href="{% url 'car_detail' pk=car.id %}" class="btn btn-primary btn-lg">Cancel</a>
             </form>
         </div>
     </div>

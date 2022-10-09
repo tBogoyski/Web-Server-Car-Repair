@@ -11,8 +11,8 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <input type="submit" value="Add" class="btn btn-success">
-                    <a href="{% url 'car_list' %}" class="btn btn-danger">Cancel</a>
+                    <input type="submit" value="Add" class="btn btn-success btn-lg">
+                    <a href="{% url 'car_list' %}" class="btn btn-danger btn-lg">Cancel</a>
                 </form>
             </div>
         </div>

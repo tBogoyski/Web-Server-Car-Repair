@@ -20,5 +20,5 @@ class Event(models.Model):
     event_text = models.TextField()
     periodic_event = models.BooleanField()
     next_date = models.DateField(blank=True, null=True)
-    next_change = models.DateField(blank=True, null=True)
+    next_change = models.CharField(max_length=100, blank=True, null=True)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)

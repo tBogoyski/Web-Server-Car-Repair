@@ -10,8 +10,8 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <input type="submit" value="Save" class="btn btn-success">
-                    <a href="{% url 'car_detail' pk=car.pk %}" class="btn btn-danger">Cancel</a>
+                    <input type="submit" value="Save" class="btn btn-success btn-lg">
+                    <a href="{% url 'car_detail' pk=car.pk %}" class="btn btn-danger btn-lg">Cancel</a>
                 </form>
             </div>
         </div>
