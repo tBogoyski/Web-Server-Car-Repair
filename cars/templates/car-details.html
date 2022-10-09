@@ -5,6 +5,7 @@
     <a href="{% url 'car_delete' pk=car.pk %}">Delete</a>
     <a href="{% url 'car_update' pk=car.pk %}">Update</a>
     <a href="{% url 'add_event' pk=car.pk %}">Create event</a>
+    <a href="{% url 'car_list' %}">Back</a>
 
     {% if events %}
         <table class="table">
@@ -14,6 +15,7 @@
             <th scope="col">KM OF CAR</th>
             <th scope="col">NEXT DATE</th>
             <th scope="col">PERIODIC EVENT</th>
+            <th scope="col">DETAILS</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +25,7 @@
                 <td>{{ event.km_of_car }}</td>
                 <td>{{ event.next_date }}</td>
                 <td>{{ event.periodic_event }}</td>
+                <td><a href="{% url 'event_detial' pk=event.pk %}">Details</a></td>
             </tr>
         {% endfor %}
     {% else %}

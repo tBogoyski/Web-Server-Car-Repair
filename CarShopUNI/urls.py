@@ -27,4 +27,7 @@ urlpatterns = [
     path('car/<int:pk>/delete/', cars.views.CarDeleteView.as_view(), name='car_delete'),
     path('car/<int:pk>/update/', cars.views.CarUpdateView.as_view(), name='car_update'),
     path('car/<int:pk>/add-event/', cars.views.add_event_to_car, name='add_event'),
+    path('event-details/<int:pk>/', cars.views.EventDetailView.as_view(), name='event_detial'),
+    path('event/<int:pk>/delete/', cars.views.EventDeleteView.as_view(), name='event_delete'),
+    path('event/<int:pk>/update/', cars.views.EventUpdateView.as_view(), name='event_update'),
 ]
